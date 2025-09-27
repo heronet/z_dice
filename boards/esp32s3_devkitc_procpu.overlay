@@ -1,0 +1,28 @@
+/ {
+	chosen {
+		zephyr,auxdisplay = &tm1637;
+		zephyr,entropy = &trng0;
+	};
+
+	aliases {
+		key = &key;
+	};
+
+	tm1637: tm1637 {
+		compatible = "titanmicro,tm1637";
+		clk-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
+		dio-gpios = <&gpio0 5 GPIO_ACTIVE_HIGH>;
+		bit-delay-us = <100>;
+		columns = <4>;
+		rows = <1>;
+	};
+
+	buttons {
+		compatible = "gpio-keys";
+		
+		key: key {
+			gpios = <&gpio1 13 GPIO_ACTIVE_LOW>; // GPIO 45; 45 - 32 = 13 of GPIO1 controller
+			label = "Dice Roll Button";
+		};
+	};
+};

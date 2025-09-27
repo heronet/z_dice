@@ -1,0 +1,6 @@
+BasedOnStyle: LLVM
+AllowAllParametersOfDeclarationOnNextLine: true
+BinPackParameters: false
+BinPackArguments: false
+ColumnLimit: 100
+PointerAlignment: Left
