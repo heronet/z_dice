@@ -6,9 +6,9 @@
 #include <zephyr/random/random.h>
 
 /* Thread stack sizes */
-#define BUTTON_THREAD_STACK_SIZE 256
-#define DISPLAY_THREAD_STACK_SIZE 256
-#define RNG_THREAD_STACK_SIZE 256
+#define BUTTON_THREAD_STACK_SIZE 512
+#define DISPLAY_THREAD_STACK_SIZE 512
+#define RNG_THREAD_STACK_SIZE 1024
 
 /* Thread priorities */
 #define BUTTON_THREAD_PRIORITY 7
@@ -172,6 +172,7 @@ void display_thread_entry(void* arg1, void* arg2, void* arg3) {
 int main(void) {
   int ret;
 
+  /* Initialize display device */
   if (!device_is_ready(display_dev)) {
     return -ENODEV;
   }
@@ -183,6 +184,7 @@ int main(void) {
 
   auxdisplay_brightness_set(display_dev, 1);
 
+  /* Initialize button GPIO */
   if (!gpio_is_ready_dt(&button_spec)) {
     return -ENODEV;
   }

@@ -21,7 +21,7 @@
 		compatible = "gpio-keys";
 		
 		key: key {
-			gpios = <&gpio1 13 GPIO_ACTIVE_LOW>; // GPIO 45; 45 - 32 = 13 of GPIO1 controller
+			gpios = <&gpio1 13 GPIO_ACTIVE_LOW>;
 			label = "Dice Roll Button";
 		};
 	};
